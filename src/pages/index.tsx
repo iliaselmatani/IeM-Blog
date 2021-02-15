@@ -13,7 +13,7 @@ export default function Index() {
       <div className="container">
         <div>
           <h1>
-            Hi, I am Ilias el Matani. <span className="fancy">.</span>
+            Hi, I am Ilias el Matani<span className="fancy">.</span>
           </h1>
           <span className="handle">I make stuff, break stuff and protect stuff from getting hacked.</span>
           <h2>This is my personal blog about security and privacy.</h2>
