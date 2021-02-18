@@ -1,0 +1,50 @@
+---
+slug: proxmox-fail2ban
+title: Protecting the web interface against bruteforces with fail2ban
+date: 2021-02-18
+author: ielmatani
+tags:
+  - proxmox
+---
+
+## Install Fail2Ban package
+Install Fail2Ban package to protect server from brute-force attacks. 
+
+```
+sudo apt-get install fail2ban
+```
+
+## Fail2Ban configuration for Proxmox
+
+Create, if does not exist, the file jail.local (/etc/fail2ban/jail.local).
+The following configuration works, unchanged, for Proxmox 6.x.
+Add the following string to the end of this file /etc/fail2ban/jail.local :
+```
+[proxmox]
+enabled = true
+port = https,http,8006
+filter = proxmox
+logpath = /var/log/daemon.log
+maxretry = 3
+# 1 hour
+bantime = 3600
+```
+Create the file /etc/fail2ban/filter.d/proxmox.conf :
+
+```
+[Definition]
+failregex = pvedaemon\[.*authentication failure; rhost=<HOST> user=.* msg=.*
+ignoreregex =
+```
+
+Restart Fail2Ban to make sure that the configuration changes takes affect.
+
+```
+systemctl restart fail2ban
+```
+
+## Test Fail2Ban
+You can test your configuration trying to GUI login with a wrong password or user, and then issue the command:
+
+```fail2ban-regex /var/log/daemon.log /etc/fail2ban/filter.d/proxmox.conf```
+You should have at least a "Failregex: 1 total" at the top of the "Results" section (and "1 matched" at the bottom)
