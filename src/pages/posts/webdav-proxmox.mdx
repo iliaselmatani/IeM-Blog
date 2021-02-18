@@ -9,14 +9,14 @@ tags:
 
 ## Proxmox Linux Container
 
-"Containers are a lightweight alternative to fully virtualized machines (VMs). They use the kernel of the host system that they run on, instead of emulating a full operating system (OS). This means that containers can access resources on the host system directly."
+Containers are a lightweight alternative to fully virtualized machines (VMs). They use the kernel of the host system that they run on, instead of emulating a full operating system (OS). This means that containers can access resources on the host system directly.
 
 ## Unprivileged Container
 
-"Unprivileged containers use a new kernel feature called user namespaces. The root UID 0 inside the container is mapped to an unprivileged user outside the container. This means that most security issues (container escape, resource abuse, etc.) in these containers will affect a random unprivileged user, and would be a generic kernel security bug rather than an LXC issue. The LXC team, developers behind the technology of the Linux Containers, thinks unprivileged containers are safe by design. This is the default option when creating a new container in Proxmox."
+Unprivileged containers use a new kernel feature called user namespaces. The root UID 0 inside the container is mapped to an unprivileged user outside the container. This means that most security issues (container escape, resource abuse, etc.) in these containers will affect a random unprivileged user, and would be a generic kernel security bug rather than an LXC issue. The LXC team, developers behind the technology of the Linux Containers, thinks unprivileged containers are safe by design. This is the default option when creating a new container in Proxmox.
 
 ## Can't open fuse device
-"If your container is unprivileged, which is by default with Proxmox Linux Containers, you need to allow using fuse file systems in a container."
+If your container is unprivileged, which is by default with Proxmox Linux Containers, you need to allow using fuse file systems in a container.
 
 ```
 /sbin/mount.davfs: loading kernel module fuse
@@ -26,4 +26,4 @@ tags:
 /sbin/mount.davfs: trying coda kernel file system
 /sbin/mount.davfs: no free coda device to mount
 ```
-"Your VM needs to be powered off. Go to the Options of the VM and double click on Features. Tap on Fuse."
+Your VM needs to be powered off. Go to the Options of the VM and double click on Features. Tap on Fuse.
