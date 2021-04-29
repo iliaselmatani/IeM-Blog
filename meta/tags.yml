@@ -1,3 +1,7 @@
 tags:
   - slug: proxmox
     name: proxmox
+  - slug: android
+    name: android
+  - slug: frida
+    name: frida
