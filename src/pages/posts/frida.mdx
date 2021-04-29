@@ -28,7 +28,8 @@ pip install frida-tools
 ```
 
 ### Injection script
-```/* 
+```
+/* 
    Android SSL Re-pinning frida script v0.2 030417-pier
 $ adb push burpca-cert-der.crt /data/local/tmp/cert-der.crt
    $ frida -U -f it.app.mobile -l frida-android-repinning.js --no-pause
@@ -84,4 +85,5 @@ SSLContext.init.overload("[Ljavax.net.ssl.KeyManager;", "[Ljavax.net.ssl.TrustMa
       console.log("[+] SSLContext initialized with our custom TrustManager!");
      }
     });
-},0);```
+},0);
+```
